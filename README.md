@@ -91,7 +91,19 @@ Response:
   "type": "user",
   "attributes": {
     "usernamename": "funbucket89",
-    "email": "shameka_goyette@bartell.co"
+    "email": "shameka_goyette@bartell.co",
+    "myers_briggs": {
+      "id": "1",
+      "type": "ENFP",
+      "name": "The Campaigner"
+      "descriptions": "A Campaigner (ENFP) is someone with the Extraverted, Intuitive, Feeling, and Prospecting personality traits..."
+      }
+      "enneagram": {
+      "id": "1",
+      "number": "7",
+      "name": "The Enthusiast"
+      "descriptions": "Enneagram Sevens have the motivational need to experience life to the fullest and avoid pain. Sevens value a sense of freedom and focus on optimism..."
+      }
     }
   }
 }
@@ -124,6 +136,37 @@ Response:
           "myers_briggs": "INFP",
           "enneagram": 3,
           "user_id": 145
+        }
+      }
+   ]
+}
+```
+
+
+<br>
+Request:
+`/api/v1/user_search`
+
+Response:
+```json
+{
+  "data": [
+      {
+        "id": 17,
+        "type": "user",
+        "attributes": {
+          "username": "pizzaslice95",
+          "myers_briggs": "INTP",
+          "enneagram": 4,
+        }
+      },
+      {
+        "id": 18,
+        "type": "user",
+        "attributes": {
+          "username": "samip",
+          "myers_briggs": "INFP",
+          "enneagram": 3,
         }
       }
    ]
