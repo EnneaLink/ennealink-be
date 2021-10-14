@@ -95,13 +95,13 @@ Response:
     "myers_briggs": {
       "id": "1",
       "type": "ENFP",
-      "name": "The Campaigner"
+      "name": "The Campaigner",
       "descriptions": "A Campaigner (ENFP) is someone with the Extraverted, Intuitive, Feeling, and Prospecting personality traits..."
       }
       "enneagram": {
       "id": "1",
       "number": "7",
-      "name": "The Enthusiast"
+      "name": "The Enthusiast",
       "descriptions": "Enneagram Sevens have the motivational need to experience life to the fullest and avoid pain. Sevens value a sense of freedom and focus on optimism..."
       }
     }
