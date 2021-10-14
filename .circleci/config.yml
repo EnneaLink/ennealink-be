@@ -15,7 +15,7 @@ workflows:
             branches:
               only: main
           post-steps:
-            - run: heroku run rails db:migrate --app arcane-headland-30273
+            - run: heroku run rails db:migrate --app ennealink-be
 jobs:
   build:
     parallelism: 1
