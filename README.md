@@ -90,7 +90,7 @@ Response:
   "id": "133",
   "type": "user",
   "attributes": {
-    "usernamename": "funbucket89",
+    "username": "funbucket89",
     "email": "shameka_goyette@bartell.co",
     "myers_briggs": {
       "id": "1",
