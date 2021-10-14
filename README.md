@@ -98,7 +98,7 @@ Response:
       "name": "The Campaigner",
       "descriptions": "A Campaigner (ENFP) is someone with the Extraverted, Intuitive, Feeling, and Prospecting personality traits..."
       },
-      "enneagram": {
+    "enneagram": {
       "id": "1",
       "number": "7",
       "name": "The Enthusiast",
