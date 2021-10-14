@@ -145,7 +145,7 @@ Response:
 
 <br>
 Request:
-`/api/v1/user_search`
+`/api/v1/users`
 
 Response:
 ```json
