@@ -92,6 +92,8 @@ Response:
   "attributes": {
     "username": "funbucket89",
     "email": "shameka_goyette@bartell.co",
+    "google_id": "1234",
+    "google_image": ";lakdjflkjdfkdaj;lfkds",
     "myers_briggs": {
       "id": "1",
       "type": "ENFP",
