@@ -39,8 +39,7 @@ mb15 = MyersBrigg.create(type: 'ENFJ', name: 'The Protagonist', description: 'Th
 mb16 = MyersBrigg.create(type: 'ENTJ', name: 'The Commander', description: 'They are decisive people who love momentum and accomplishment. They gather information to construct their creative visions but rarely hesitate for long before acting on them.')
 
 
-u1 = User.create(email: 'dev@2105.com', userna
-me: 'funbucket', password: 'password', enneagram_id: e1.id, myers_brigg_id: mb6.id)
+u1 = User.create(email: 'dev@2105.com', username: 'funbucket', password: 'password', enneagram_id: e1.id, myers_brigg_id: mb6.id)
 u2 = create(:user)
 u3 = create(:user)
 u4 = create(:user)
