@@ -63,7 +63,7 @@ rails -v
 ```
 4. If you get a message saying rails is not installed or you do not have version 5.2.5, run
 ```sh
-gem install rails --version 5.2.5
+gem install rails --version 5.2.6
 ```
 5. You may need to quit and restart your terminal session to see these changes show up
 
