@@ -75,11 +75,15 @@ gem install rails --version 5.2.6
    ```sh
    git clone git@github.com:EnneaLink/ennealink-be.git
    ```
-3. Install gems
+3. Install PostgresQL
+   ```
+   brew install postgresql
+   ```
+4. Install gems
    ```sh
    bundle install
    ```
-4. Setup the database
+5. Setup the database
     ```sh
    rails db:create
    rails db:migrate
