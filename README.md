@@ -70,7 +70,20 @@ gem install rails --version 5.2.5
 
 
 ## Installation
-
+1. Fork this repo
+2. Clone your new repo
+   ```sh
+   git clone 
+   ```
+3. Install gems
+   ```sh
+   bundle install
+   ```
+4. Setup the database
+    ```sh
+   rails db:create
+   rails db:migrate
+   ```
 
 
 ## How To Use
