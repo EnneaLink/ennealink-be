@@ -79,11 +79,12 @@ gem install rails --version 5.2.6
    ```
    brew install postgresql
    ```
-4. Install gems
+4. Install PostgresQL app [here](https://www.postgresql.org/download/)
+5. Install gems
    ```sh
    bundle install
    ```
-5. Setup the database
+6. Setup the database
     ```sh
    rails db:create
    rails db:migrate
