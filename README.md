@@ -73,7 +73,7 @@ gem install rails --version 5.2.6
 1. Fork this repo
 2. Clone your new repo
    ```sh
-   git clone 
+   git clone git@github.com:EnneaLink/ennealink-be.git
    ```
 3. Install gems
    ```sh
