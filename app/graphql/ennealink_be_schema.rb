@@ -2,6 +2,9 @@ class EnnealinkBeSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 
+  # Add built-in connections for pagination
+  use GraphQL::Pagination::Connections
+
   # Union and Interface Resolution
   def self.resolve_type(abstract_type, obj, ctx)
     # TODO: Implement this function
