@@ -99,100 +99,53 @@ gem install rails --version 5.2.6
 ### Endpoint Documentation
 
 Request:
-`/api/v1/users/:id`
+`/graphql`
+
+Query:
+```json
+{
+   getUserStats(id: "4") {
+     email
+     username
+     enneagram{
+       id
+       number
+       name
+       description
+     }
+     myersBrigg{
+       id
+       typeOf
+       name
+       description
+     }
+   }
+ }
+ ```
 
 Response:
 ```json
 {
-  "data": {
-  "id": "133",
-  "type": "user",
-  "attributes": {
-    "username": "funbucket89",
-    "email": "shameka_goyette@bartell.co",
-    "google_id": "1234",
-    "google_image": ";lakdjflkjdfkdaj;lfkds",
-    "myers_briggs": {
-      "id": "1",
-      "type": "ENFP",
-      "name": "The Campaigner",
-      "descriptions": "A Campaigner (ENFP) is someone with the Extraverted, Intuitive, Feeling, and Prospecting personality traits..."
-      },
-    "enneagram": {
-      "id": "1",
-      "number": "7",
-      "name": "The Enthusiast",
-      "descriptions": "Enneagram Sevens have the motivational need to experience life to the fullest and avoid pain. Sevens value a sense of freedom and focus on optimism..."
-      }
+    "data": {
+        "getUserStats": {
+            "email": "dev@2105.com",
+            "username": "funbucket",
+            "enneagram": {
+                "id": "46",
+                "number": 1,
+                "name": "The Reformer",
+                "description": "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic."
+            },
+            "myersBrigg": {
+                "id": "54",
+                "typeOf": "ISFP",
+                "name": "The Adventurer",
+                "description": "They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in the moment helps them uncover exciting potentials."
+            }
+        }
     }
-  }
 }
 ```
-
-
-<br>
-Request:
-`/api/v1/users/:id/friends`
-
-Response:
-```json
-{
-  "data": [
-      {
-        "id": 175,
-        "type": "friend",
-        "attributes": {
-          "username": "gunbunz",
-          "myers_briggs": "INTP",
-          "enneagram": 4,
-          "user_id": 145
-        }
-      },
-      {
-        "id": 184,
-        "type": "friend",
-        "attributes": {
-          "username": "samip",
-          "myers_briggs": "INFP",
-          "enneagram": 3,
-          "user_id": 145
-        }
-      }
-   ]
-}
-```
-
-
-<br>
-Request:
-`/api/v1/users`
-
-Response:
-```json
-{
-  "data": [
-      {
-        "id": 17,
-        "type": "user",
-        "attributes": {
-          "username": "pizzaslice95",
-          "myers_briggs": "INTP",
-          "enneagram": 4,
-        }
-      },
-      {
-        "id": 18,
-        "type": "user",
-        "attributes": {
-          "username": "samip",
-          "myers_briggs": "INFP",
-          "enneagram": 3,
-        }
-      }
-   ]
-}
-```
-
 
 
 ## Database Schema
