@@ -4,14 +4,16 @@ RSpec.describe Types::QueryType do
   describe 'display user stats' do
     it 'can query a single user and thier stats' do
       personality_data
+
       e = Enneagram.first
       mb = MyersBrigg.second
       @u1 = User.create(email: 'dev@2105.com', username: 'funbucket', password: 'password', enneagram_id: e.id, myers_brigg_id: mb.id)
 
       result = EnnealinkBeSchema.execute(query).as_json
 
-      expect(result["data"]["getUserStats"]["email"]).to eq("dev@2105.com")
-      expect(result["data"]["getUserStats"]["username"]).to eq("funbucket")
+      expect(result["data"]["getUserStats"]["id"]).to eq(@u1.id.to_s)
+      expect(result["data"]["getUserStats"]["email"]).to eq(@u1.email)
+      expect(result["data"]["getUserStats"]["username"]).to eq(@u1.username)
 
       expect(result["data"]["getUserStats"]["enneagram"]).to be_a(Hash)
       expect(result["data"]["getUserStats"]["enneagram"]["id"]).to eq(e.id.to_s)
@@ -31,6 +33,7 @@ RSpec.describe Types::QueryType do
     <<~GQL
     {
       getUserStats(id: "#{@u1.id}") {
+        id
         email
         username
         enneagram{
