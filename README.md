@@ -102,7 +102,7 @@ Request:
 `/graphql`
 
 Query:
-```json
+```graphql
 {
    getUserStats(id: "4") {
      email
