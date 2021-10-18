@@ -11,5 +11,6 @@ RSpec.describe MyersBrigg, type: :model do
     it { should_not allow_value('INFJ0').for(:type_of) }
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:link) }
   end
 end

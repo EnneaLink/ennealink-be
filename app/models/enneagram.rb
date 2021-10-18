@@ -4,4 +4,5 @@ class Enneagram < ApplicationRecord
   validates :number, presence: true, :inclusion => 1..9
   validates :name, presence: true
   validates :description, presence: true
+  validates :link, presence: true
 end

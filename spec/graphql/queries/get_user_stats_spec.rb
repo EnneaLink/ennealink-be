@@ -20,12 +20,14 @@ RSpec.describe Types::QueryType do
       expect(result["data"]["getUserStats"]["enneagram"]["number"]).to eq(e.number)
       expect(result["data"]["getUserStats"]["enneagram"]["name"]).to eq(e.name)
       expect(result["data"]["getUserStats"]["enneagram"]["description"]).to eq(e.description)
+      expect(result["data"]["getUserStats"]["enneagram"]["link"]).to eq(e.link)
 
       expect(result["data"]["getUserStats"]["myersBrigg"]).to be_a(Hash)
       expect(result["data"]["getUserStats"]["myersBrigg"]["id"]).to eq(mb.id.to_s)
       expect(result["data"]["getUserStats"]["myersBrigg"]["typeOf"]).to eq(mb.type_of)
       expect(result["data"]["getUserStats"]["myersBrigg"]["name"]).to eq(mb.name)
       expect(result["data"]["getUserStats"]["myersBrigg"]["description"]).to eq(mb.description)
+      expect(result["data"]["getUserStats"]["myersBrigg"]["link"]).to eq(mb.link)
     end
   end
 
@@ -41,12 +43,14 @@ RSpec.describe Types::QueryType do
           number
           name
           description
+          link
         }
         myersBrigg{
           id
           typeOf
           name
           description
+          link
         }
       }
     }
