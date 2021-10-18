@@ -129,6 +129,7 @@ Response:
 {
     "data": {
         "getUserStats": {
+            "id": "4",
             "email": "dev@2105.com",
             "username": "funbucket",
             "enneagram": {
