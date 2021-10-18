@@ -4,7 +4,7 @@ module Types
     field :number, Integer, null: false
     field :name, String, null: false
     field :description, String, null: false
-    field :link, String, null: false
-    field :user, [Types::UserType], null: true
+    # Link needs to be updated with info and null:false
+    field :link, String, null: true
   end
 end

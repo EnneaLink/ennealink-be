@@ -3,9 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
-gem 'sass-rails'
-gem 'uglifier'
-gem 'coffee-rails'
+# Gems for GraphQL
+# gem 'sass-rails'
+# gem 'uglifier'
+# gem 'coffee-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.6'
@@ -48,7 +49,7 @@ end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'graphiql-rails'
+  gem 'graphiql-rails', '~> 1.7'
 end
 
 group :test do
@@ -64,4 +65,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "graphql", "~> 1.9"
+gem 'graphql', '~> 1.10', '>= 1.10.9'

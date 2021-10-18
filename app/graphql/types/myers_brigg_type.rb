@@ -4,7 +4,7 @@ module Types
     field :type_of, Integer, null: false
     field :name, String, null: false
     field :description, String, null: false
-    field :link, String, null: false
-    field :user, [Types::UserType], null: true
+    # add link info and change to null:false
+    field :link, String, null: true
   end
 end
