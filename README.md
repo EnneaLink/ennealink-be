@@ -113,12 +113,14 @@ Query:
        number
        name
        description
+       link
      }
      myersBrigg{
        id
        typeOf
        name
        description
+       link
      }
    }
  }
@@ -136,13 +138,15 @@ Response:
                 "id": "46",
                 "number": 1,
                 "name": "The Reformer",
-                "description": "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic."
+                "description": "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic.",
+                "link": "https://www.enneagraminstitute.com/type-1"
             },
             "myersBrigg": {
                 "id": "54",
                 "typeOf": "ISFP",
                 "name": "The Adventurer",
-                "description": "They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in the moment helps them uncover exciting potentials."
+                "description": "They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in the moment helps them uncover exciting potentials.",
+                "link": "https://www.16personalities.com/isfp-personality"
             }
         }
     }
