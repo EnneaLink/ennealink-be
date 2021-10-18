@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_10_16_000550) do
   end
 
   create_table "myers_briggs", force: :cascade do |t|
-    t.string "type"
+    t.string "type_of"
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
