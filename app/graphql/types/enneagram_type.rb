@@ -6,5 +6,6 @@ module Types
     field :description, String, null: false
     # Link needs to be updated with info and null:false
     field :link, String, null: true
+    field :users, [Types::UserType], null: true
   end
 end

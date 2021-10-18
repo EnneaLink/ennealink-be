@@ -3,12 +3,14 @@ module Types
     # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     # include GraphQL::Types::Relay::HasNodeField
     # include GraphQL::Types::Relay::HasNodesField
-    
-    field :get_user_stats, Types::UserType, null: false, description: 'Returns user stats' do
+
+    field :get_user_stats, Types::UserType, null: false do
+      description 'Returns user stats'
       argument :id, ID, required: true
     end
 
-    field :get_user, Types::UserType, null: false, description: 'Returns a single user by id' do
+    field :get_user, Types::UserType, null: false do
+      description 'Returns a single user by id'
       argument :id, ID, required: true
     end
 

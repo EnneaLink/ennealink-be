@@ -3,10 +3,7 @@ require 'rails_helper'
 RSpec.describe Types::QueryType do
   describe "display user" do
     it 'can query a single user' do
-      personality_data
-      e = Enneagram.first
-      mb = MyersBrigg.second
-      u1 = User.create!(email: 'dev@2105.com', username: 'funbucket', password: 'password', enneagram_id: e.id, myers_brigg_id: mb.id)
+      @u1 = User.create(email: 'dev@2105.com', username: 'funbucket', password: 'password')
 
       result = EnnealinkBeSchema.execute(query).as_json
       expect(result["data"]["getUser"]["email"]).to eq("dev@2105.com")
@@ -17,7 +14,7 @@ RSpec.describe Types::QueryType do
   def query
     <<~GQL
     {
-      getUser(id: "1") {
+      getUser(id: "#{@u1.id}") {
         email
         username
       }
