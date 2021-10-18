@@ -105,6 +105,7 @@ Query:
 ```graphql
 {
    getUserStats(id: "4") {
+     id
      email
      username
      enneagram{
