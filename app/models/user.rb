@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships, foreign_key: 'friend_id'
 
-  validates :email, presence: true, uniqueness: true, format: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  # validates :email, presence: false, uniqueness: true, format: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
 
