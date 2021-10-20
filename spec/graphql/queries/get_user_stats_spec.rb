@@ -8,9 +8,11 @@ RSpec.describe Types::QueryType do
       e = Enneagram.first
       mb = MyersBrigg.second
       @u1 = User.create(email: 'dev@2105.com', username: 'funbucket', password: 'password', enneagram_id: e.id, myers_brigg_id: mb.id)
+      @u2 = User.create(email: 'test@test.com', username: 'gerdy', password: 'sugma', enneagram_id: e.id, myers_brigg_id: mb.id)
+      friendship = Friendship.create(user_id: @u1.id, friend_id: @u2.id)
 
       result = EnnealinkBeSchema.execute(query).as_json
-
+      
       expect(result["data"]["getUserStats"]["id"]).to eq(@u1.id.to_s)
       expect(result["data"]["getUserStats"]["email"]).to eq(@u1.email)
       expect(result["data"]["getUserStats"]["username"]).to eq(@u1.username)
@@ -28,6 +30,10 @@ RSpec.describe Types::QueryType do
       expect(result["data"]["getUserStats"]["myersBrigg"]["name"]).to eq(mb.name)
       expect(result["data"]["getUserStats"]["myersBrigg"]["description"]).to eq(mb.description)
       expect(result["data"]["getUserStats"]["myersBrigg"]["link"]).to eq(mb.link)
+
+      expect(result["data"]["getUserStats"]["friends"]).to be_a(Array)
+      expect(result["data"]["getUserStats"]["friends"].size).to eq(1)
+      expect(result["data"]["getUserStats"]["friends"][0]["username"]).to eq(@u2.username)
     end
   end
 
@@ -51,6 +57,25 @@ RSpec.describe Types::QueryType do
           name
           description
           link
+        }
+        friends{
+          id
+          email
+          username
+          enneagram{
+          id
+          number
+          name
+          description
+          link
+          }
+          myersBrigg{
+            id
+            typeOf
+            name
+            description
+            link
+          }
         }
       }
     }
