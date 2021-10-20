@@ -7,14 +7,13 @@ RSpec.describe Types::QueryType do
 
       e = Enneagram.first
       mb = MyersBrigg.second
-      @u1 = User.create(email: 'dev@2105.com', username: 'funbucket', password: 'password', enneagram_id: e.id, myers_brigg_id: mb.id)
-      @u2 = User.create(email: 'test@test.com', username: 'gerdy', password: 'sugma', enneagram_id: e.id, myers_brigg_id: mb.id)
+      @u1 = User.create(username: 'funbucket', password: 'password', enneagram_id: e.id, myers_brigg_id: mb.id)
+      @u2 = User.create(username: 'gerdy', password: 'sugma', enneagram_id: e.id, myers_brigg_id: mb.id)
       friendship = Friendship.create(user_id: @u1.id, friend_id: @u2.id)
 
       result = EnnealinkBeSchema.execute(query).as_json
-      
+
       expect(result["data"]["getUserStats"]["id"]).to eq(@u1.id.to_s)
-      expect(result["data"]["getUserStats"]["email"]).to eq(@u1.email)
       expect(result["data"]["getUserStats"]["username"]).to eq(@u1.username)
 
       expect(result["data"]["getUserStats"]["enneagram"]).to be_a(Hash)
@@ -42,7 +41,6 @@ RSpec.describe Types::QueryType do
     {
       getUserStats(id: "#{@u1.id}") {
         id
-        email
         username
         enneagram{
           id
@@ -60,7 +58,6 @@ RSpec.describe Types::QueryType do
         }
         friends{
           id
-          email
           username
           enneagram{
           id
