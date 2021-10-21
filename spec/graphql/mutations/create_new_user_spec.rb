@@ -16,7 +16,7 @@ module Mutations
           json = JSON.parse(response.body)
           data = json['data']
 
-          expect(data['user']['id']).to eq(User.first.id)
+          expect(data['user']['id']).to eq(User.first.id.to_s)
           expect(data['user']['username']).to eq('Gertie')
         end
       end
@@ -27,8 +27,8 @@ module Mutations
           user: createUser(
           authProvider: {
             credentials: {
-              username: 'Gertie'
-              password: 'password'
+              username: "Gertie",
+              password: "password"
             }
           }
           ) {
