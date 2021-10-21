@@ -145,11 +145,11 @@ Query:
 
 Response:
 ```json
-{"data"=>
-  {"getUserStats"=>
-    {"id"=>"4",
-     "username"=>"funbucket",
-     "enneagram"=>
+{"data":
+  {"getUserStats":
+    {"id":"4",
+     "username":"funbucket",
+     "enneagram":
       {"id"=>"1",
        "number"=>1,
        "name"=>"The Reformer",
