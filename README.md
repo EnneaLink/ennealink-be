@@ -104,53 +104,126 @@ Request:
 Query:
 ```graphql
 {
-   getUserStats(id: "4") {
-     id
-     email
-     username
-     enneagram{
-       id
-       number
-       name
-       description
-       link
-     }
-     myersBrigg{
-       id
-       typeOf
-       name
-       description
-       link
-     }
-   }
- }
+      getUserStats(id: "#{@u1.id}") {
+        id
+        username
+        enneagram{
+          id
+          number
+          name
+          description
+          link
+        }
+        myersBrigg{
+          id
+          typeOf
+          name
+          description
+          link
+        }
+        friends{
+          id
+          username
+          enneagram{
+          id
+          number
+          name
+          description
+          link
+          }
+          myersBrigg{
+            id
+            typeOf
+            name
+            description
+            link
+          }
+        }
+      }
+    }
  ```
 
 Response:
 ```json
-{
-    "data": {
-        "getUserStats": {
-            "id": "4",
-            "email": "dev@2105.com",
-            "username": "funbucket",
-            "enneagram": {
-                "id": "46",
-                "number": 1,
-                "name": "The Reformer",
-                "description": "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic.",
-                "link": "https://www.enneagraminstitute.com/type-1"
-            },
-            "myersBrigg": {
-                "id": "54",
-                "typeOf": "ISFP",
-                "name": "The Adventurer",
-                "description": "They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in the moment helps them uncover exciting potentials.",
-                "link": "https://www.16personalities.com/isfp-personality"
-            }
-        }
-    }
-}
+{"data"=>
+  {"getUserStats"=>
+    {"id"=>"4",
+     "username"=>"funbucket",
+     "enneagram"=>
+      {"id"=>"1",
+       "number"=>1,
+       "name"=>"The Reformer",
+       "description"=>
+        "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to mai
+ntain high standards, but can slip into being critical and perfectionistic.",
+       "link"=>"https://www.enneagraminstitute.com/type-1"},
+     "myersBrigg"=>
+      {"id"=>"2",
+       "typeOf"=>"ISFJ",
+       "name"=>"The Defender",
+       "description"=>
+        "These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention to
+practical details in their daily lives.",
+       "link"=>"https://www.16personalities.com/isfj-personality"},
+     "friends"=>
+      [{"id"=>"5",
+        "username"=>"gerdy",
+        "enneagram"=>
+         {"id"=>"1",
+          "number"=>1,
+          "name"=>"The Reformer",
+          "description"=>
+           "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to
+maintain high standards, but can slip into being critical and perfectionistic.",
+          "link"=>"https://www.enneagraminstitute.com/type-1"},
+        "myersBrigg"=>
+         {"id"=>"2",
+          "typeOf"=>"ISFJ",
+          "name"=>"The Defender",
+          "description"=>
+           "These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention
+to practical details in their daily lives.",
+          "link"=>"https://www.16personalities.com/isfj-personality"}}]}}}
+:...skipping...
+=> {"data"=>
+  {"getUserStats"=>
+    {"id"=>"4",
+     "username"=>"funbucket",
+     "enneagram"=>
+      {"id"=>"1",
+       "number"=>1,
+       "name"=>"The Reformer",
+       "description"=>
+        "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain hi
+gh standards, but can slip into being critical and perfectionistic.",
+       "link"=>"https://www.enneagraminstitute.com/type-1"},
+     "myersBrigg"=>
+      {"id"=>"2",
+       "typeOf"=>"ISFJ",
+       "name"=>"The Defender",
+       "description"=>
+        "These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention to practica
+l details in their daily lives.",
+       "link"=>"https://www.16personalities.com/isfj-personality"},
+     "friends"=>
+      [{"id"=>"5",
+        "username"=>"gerdy",
+        "enneagram"=>
+         {"id"=>"1",
+          "number"=>1,
+          "name"=>"The Reformer",
+          "description"=>
+           "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain
+ high standards, but can slip into being critical and perfectionistic.",
+          "link"=>"https://www.enneagraminstitute.com/type-1"},
+        "myersBrigg"=>
+         {"id"=>"2",
+          "typeOf"=>"ISFJ",
+          "name"=>"The Defender",
+          "description"=>
+           "These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention to pract
+ical details in their daily lives.",
+          "link"=>"https://www.16personalities.com/isfj-personality"}}]}}}
 ```
 
 
