@@ -153,16 +153,14 @@ Response:
       {"id":"1",
        "number":1,
        "name":"The Reformer",
-       "description":
-        "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to mai
+       "description":"Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to mai
 ntain high standards, but can slip into being critical and perfectionistic.",
        "link":"https://www.enneagraminstitute.com/type-1"},
      "myersBrigg":
       {"id":"2",
        "typeOf":"ISFJ",
        "name":"The Defender",
-       "description":
-        "These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention to
+       "description":"These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention to
 practical details in their daily lives.",
        "link":"https://www.16personalities.com/isfj-personality"},
      "friends":
@@ -172,16 +170,14 @@ practical details in their daily lives.",
          {"id":"1",
           "number":1,
           "name":"The Reformer",
-          "description":
-           "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to
+          "description":"Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to
 maintain high standards, but can slip into being critical and perfectionistic.",
           "link":"https://www.enneagraminstitute.com/type-1"},
         "myersBrigg":
          {"id":"2",
           "typeOf":"ISFJ",
           "name":"The Defender",
-          "description":
-           "These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention
+          "description":"These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention
 to practical details in their daily lives.",
           "link":"https://www.16personalities.com/isfj-personality"}}]}}}
 ```
