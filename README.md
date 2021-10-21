@@ -99,7 +99,7 @@ gem install rails --version 5.2.6
 ### Endpoint Documentation
 
 Request:
-`/graphql`
+POST `/graphql`
 
 Query:
 ```graphql
@@ -182,6 +182,37 @@ to practical details in their daily lives.",
           "link":"https://www.16personalities.com/isfj-personality"}}]}}}
 ```
 
+Request:
+POST `/graphql`
+
+Query:
+```graphql
+mutation {
+          user: createUser(
+          authProvider: {
+            credentials: {
+              username: "Gertie",
+              password: "password"
+            }
+          }
+          ) {
+            id
+            username
+            }
+          }
+ ```
+
+Response:
+```json
+{
+"data":{
+  "user":{
+    "id":"2",
+    "username":"Gertie"
+    }
+  }
+}
+```
 
 ## Database Schema
 
