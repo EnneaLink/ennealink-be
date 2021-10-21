@@ -104,43 +104,43 @@ POST `/graphql`
 Query:
 ```graphql
 {
-      getUserStats(id: "#{@u1.id}") {
-        id
-        username
-        enneagram{
-          id
-          number
-          name
-          description
-          link
-        }
-        myersBrigg{
-          id
-          typeOf
-          name
-          description
-          link
-        }
-        friends{
-          id
-          username
-          enneagram{
-          id
-          number
-          name
-          description
-          link
-          }
-          myersBrigg{
-            id
-            typeOf
-            name
-            description
-            link
-          }
-        }
-      }
-    }
+   getUserStats(id: "#{@u1.id}") {
+     id
+     username
+     enneagram{
+       id
+       number
+       name
+       description
+       link
+     }
+     myersBrigg{
+       id
+       typeOf
+       name
+       description
+       link
+     }
+     friends{
+       id
+       username
+       enneagram{
+       id
+       number
+       name
+       description
+       link
+       }
+       myersBrigg{
+         id
+         typeOf
+         name
+         d  
+         link
+       }
+     }
+   }
+ }
  ```
 
 Response:
@@ -188,18 +188,18 @@ POST `/graphql`
 Query:
 ```graphql
 mutation {
-          user: createUser(
-          authProvider: {
-            credentials: {
-              username: "Gertie",
-              password: "password"
-            }
-          }
-          ) {
-            id
-            username
-            }
-          }
+  user: createUser(
+  authProvider: {
+    credentials: {
+      username: "Gertie",
+      password: "password"
+    }
+  }
+  {
+    id
+    username
+    }
+  }
  ```
 
 Response:
