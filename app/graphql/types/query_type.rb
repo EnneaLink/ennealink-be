@@ -14,6 +14,14 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :get_all_users, [Types::UserType], null: false do
+      description 'Returns all users'
+    end
+
+    def get_all_users
+      User.all
+    end
+
     def get_user_stats(id:)
       User.find(id)
     end
