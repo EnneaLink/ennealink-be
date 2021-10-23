@@ -1,16 +1,3 @@
-FactoryBot.define do
-  factory :user, aliases: [:friend] do
-    # email { Faker::Internet.email }
-    username { Faker::Internet.username }
-    password { Faker::Internet.password }
-  end
-
-  factory :friendship do
-    user
-    friend
-  end
-end
-
 def personality_data
   e1 = Enneagram.create(number: 1, name: 'The Reformer', description: 'Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic.', link: 'https://www.enneagraminstitute.com/type-1')
   e2 = Enneagram.create(number: 2, name: 'The Helper', description: 'Twos are empathetic, sincere, and warm-hearted... They are well-meaning and driven to be close to others, but can slip into doing things for others in order to be needed.', link: 'https://www.enneagraminstitute.com/type-2')

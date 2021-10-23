@@ -6,24 +6,31 @@ module Mutations
       describe '.resolve' do
         it 'updates a user' do
           @pam = create(:user)
-          @cheryl = create(:user, name: "Cheryl", email: "tunt@gmail.com", mod: 4, program: "BE", pronouns: "she/her", slack:"@cheryl_tunt")
-          skill_1 = @cheryl.skills.create(name: "sql")
-          skill_2 = @cheryl.skills.create(name: "javascript")
-          skilL_3 = @cheryl.skills.create(name: "")
-
+          personality_data
           post '/graphql', params: { query: query }
-
+          
           json = JSON.parse(response.body)
+          require "pry"; binding.pry
           data = json['data']
+          expect(data["user"]["id"]).to eq(@u1.id.to_s)
+          expect(data["user"]["username"]).to eq(@u1.username)
 
-          expect(data['user']['name']).to eq('Carl Crockett')
-          expect(data['user']['program']).to eq('BE')
-          expect(data['user']['module']).to eq('2')
-          expect(data['user']['email']).to eq('cap@gmail.com')
-          expect(data['user']['pronouns']).to eq('she/her')
+          expect(data["user"]["enneagram"]).to be_a(Hash)
+          expect(data["user"]["enneagram"]["id"]).to eq(e.id.to_s)
+          expect(data["user"]["enneagram"]["number"]).to eq(e.number)
+          expect(data["user"]["enneagram"]["name"]).to eq(e.name)
+          expect(data["user"]["enneagram"]["description"]).to eq(e.description)
+          expect(data["user"]["enneagram"]["link"]).to eq(e.link)
+
+          expect(data["user"]["myersBrigg"]).to be_a(Hash)
+          expect(data["user"]["myersBrigg"]["id"]).to eq(mb.id.to_s)
+          expect(data["user"]["myersBrigg"]["typeOf"]).to eq(mb.type_of)
+          expect(data["user"]["myersBrigg"]["name"]).to eq(mb.name)
+          expect(data["user"]["myersBrigg"]["description"]).to eq(mb.description)
+          expect(data["user"]["myersBrigg"]["link"]).to eq(mb.link)
         end
 
-        it 'it returns updated skill in correct position' do
+        xit 'it returns updated skill in correct position' do
           bob = create(:user, id: 11, name: "Bob", email: "tunt@gmail.com", mod: "4", program: "BE", pronouns: "she/her", slack:"@cheryl_tunt")
           pam = create(:user)
           skill_1 = bob.skills.create(name: "sql")
@@ -45,56 +52,29 @@ module Mutations
         def query
           <<~GQL
           mutation {
-            user: updateUser(
-              input: {
-                id: "#{@cheryl.id}"
-                name: "Carl Crockett"
-                email: "cap@gmail.com"
-                module: 2
-                program: "BE"
-                pronouns: "she/her"
-                slack: "capleugh"
-                skills: ["ruby", "react", "css"]
-              }
-              ) {
-                name
-                program
-                module
+            updateUser(
+                id: #{@pam.id}
+                username: "Carl Crockett"
+                myersBrigg: "ESFJ"
+                enneagram: "8"
+              )
+              {
                 id
-                image
-                pronouns
-                email
-                slack
-                skills
-              }
-            }
-          GQL
-        end
-
-        def query_2
-          <<~GQL
-          mutation {
-            user: updateUser(
-              input: {
-                id: "11"
-                name: "Carl Crockett"
-                email: "cap@gmail.com"
-                module: 2
-                program: "BE"
-                pronouns: "she/her"
-                slack: "capleugh"
-                skills: ["", "react", ""]
-              }
-              ) {
-                name
-                program
-                module
-                id
-                image
-                pronouns
-                email
-                slack
-                skills
+                username
+                enneagram{
+                  id
+                  number
+                  name
+                  description
+                  link
+                }
+                myersBrigg{
+                  id
+                  typeOf
+                  name
+                  description
+                  link
+                }
               }
             }
           GQL
