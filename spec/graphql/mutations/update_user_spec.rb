@@ -7,53 +7,68 @@ module Mutations
         it 'updates a user' do
           @pam = create(:user)
           personality_data
+          e = Enneagram.all[7]
+          mb = MyersBrigg.all[13]
+
           post '/graphql', params: { query: query }
           
           json = JSON.parse(response.body)
-          require "pry"; binding.pry
           data = json['data']
-          expect(data["user"]["id"]).to eq(@u1.id.to_s)
-          expect(data["user"]["username"]).to eq(@u1.username)
 
-          expect(data["user"]["enneagram"]).to be_a(Hash)
-          expect(data["user"]["enneagram"]["id"]).to eq(e.id.to_s)
-          expect(data["user"]["enneagram"]["number"]).to eq(e.number)
-          expect(data["user"]["enneagram"]["name"]).to eq(e.name)
-          expect(data["user"]["enneagram"]["description"]).to eq(e.description)
-          expect(data["user"]["enneagram"]["link"]).to eq(e.link)
+          expect(data["updateUser"]["id"]).to eq(@pam.id.to_s)
+          expect(data["updateUser"]["username"]).to eq(@pam.username)
 
-          expect(data["user"]["myersBrigg"]).to be_a(Hash)
-          expect(data["user"]["myersBrigg"]["id"]).to eq(mb.id.to_s)
-          expect(data["user"]["myersBrigg"]["typeOf"]).to eq(mb.type_of)
-          expect(data["user"]["myersBrigg"]["name"]).to eq(mb.name)
-          expect(data["user"]["myersBrigg"]["description"]).to eq(mb.description)
-          expect(data["user"]["myersBrigg"]["link"]).to eq(mb.link)
+          expect(data["updateUser"]["enneagram"]).to be_a(Hash)
+          expect(data["updateUser"]["enneagram"]["id"]).to eq(e.id.to_s)
+          expect(data["updateUser"]["enneagram"]["number"]).to eq(e.number)
+          expect(data["updateUser"]["enneagram"]["name"]).to eq(e.name)
+          expect(data["updateUser"]["enneagram"]["description"]).to eq(e.description)
+          expect(data["updateUser"]["enneagram"]["link"]).to eq(e.link)
+
+          expect(data["updateUser"]["myersBrigg"]).to be_a(Hash)
+          expect(data["updateUser"]["myersBrigg"]["id"]).to eq(mb.id.to_s)
+          expect(data["updateUser"]["myersBrigg"]["typeOf"]).to eq(mb.type_of)
+          expect(data["updateUser"]["myersBrigg"]["name"]).to eq(mb.name)
+          expect(data["updateUser"]["myersBrigg"]["description"]).to eq(mb.description)
+          expect(data["updateUser"]["myersBrigg"]["link"]).to eq(mb.link)
         end
 
-        xit 'it returns updated skill in correct position' do
-          bob = create(:user, id: 11, name: "Bob", email: "tunt@gmail.com", mod: "4", program: "BE", pronouns: "she/her", slack:"@cheryl_tunt")
-          pam = create(:user)
-          skill_1 = bob.skills.create(name: "sql")
-          skill_2 = bob.skills.create(name: "javascript")
-          skill_3 = bob.skills.create(name: "graphql")
-
-          expect(bob.skills).to eq([skill_1, skill_2, skill_3])
-
-          post '/graphql', params: { query: query_2 }
+        it 'it can update a users personality when they previously had it filled out' do
+          personality_data
+          e = Enneagram.all[7]
+          mb = MyersBrigg.all[13]
+          e1 = Enneagram.first
+          mb1 = MyersBrigg.first
+          @pam = create(:user, myers_brigg_id: mb1.id, enneagram_id: e1.id)
+          # require "pry"; binding.pry
+          post '/graphql', params: { query: query }
 
           result = JSON.parse(response.body)
-          skills = result["data"]["user"]["skills"]
+          data = result['data']
 
-          expect(skills[0]).to eq('')
-          expect(skills[1]).to eq('react')
-          expect(skills[2]).to eq('')
+          expect(data["updateUser"]["id"]).to eq(@pam.id.to_s)
+          expect(data["updateUser"]["username"]).to eq(@pam.username)
+
+          expect(data["updateUser"]["enneagram"]).to be_a(Hash)
+          expect(data["updateUser"]["enneagram"]["id"]).to eq(e.id.to_s)
+          expect(data["updateUser"]["enneagram"]["number"]).to eq(e.number)
+          expect(data["updateUser"]["enneagram"]["name"]).to eq(e.name)
+          expect(data["updateUser"]["enneagram"]["description"]).to eq(e.description)
+          expect(data["updateUser"]["enneagram"]["link"]).to eq(e.link)
+
+          expect(data["updateUser"]["myersBrigg"]).to be_a(Hash)
+          expect(data["updateUser"]["myersBrigg"]["id"]).to eq(mb.id.to_s)
+          expect(data["updateUser"]["myersBrigg"]["typeOf"]).to eq(mb.type_of)
+          expect(data["updateUser"]["myersBrigg"]["name"]).to eq(mb.name)
+          expect(data["updateUser"]["myersBrigg"]["description"]).to eq(mb.description)
+          expect(data["updateUser"]["myersBrigg"]["link"]).to eq(mb.link)
         end
 
         def query
           <<~GQL
           mutation {
             updateUser(
-                id: #{@pam.id}
+                id: "#{@pam.id}"
                 username: "Carl Crockett"
                 myersBrigg: "ESFJ"
                 enneagram: "8"
