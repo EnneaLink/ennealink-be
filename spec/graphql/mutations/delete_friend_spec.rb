@@ -2,18 +2,18 @@ require 'rails_helper'
 
 module Mutations
   module Users
-    RSpec.describe AddFriend, type: :request do
+    RSpec.describe DeleteFriend, type: :request do
       describe '.resolve' do
-        it 'adds friends to the current user' do
+        it 'deletes friends to the current user' do
           @pam = create(:user)
           @metal = create(:user)
-
+          create(:friendship, user: @pam, friend: @metal)
           post '/graphql', params: { query: query }
           
           json = JSON.parse(response.body)
           data = json['data']
 
-          expect(data["addFriend"]["success"]).to eq(true)
+          expect(data["deleteFriend"]["success"]).to eq(true)
         end
 
         xit 'it does not create friendship' do
@@ -29,7 +29,7 @@ module Mutations
         def query
           <<~GQL
           mutation {
-            addFriend(
+            deleteFriend(
                 userId: "#{@pam.id}"
                 friendId: "#{@metal.id}"
               )
@@ -43,7 +43,7 @@ module Mutations
         def query2
           <<~GQL
           mutation {
-            addFriend(
+            deleteFriend(
                 userId: "#{@pam.id}"
                 friendId: "69"
               )
