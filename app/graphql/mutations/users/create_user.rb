@@ -9,11 +9,19 @@ module Mutations
 
       type Types::UserType
 
+      field :user, Types::UserType, null: false
+
       def resolve(auth_provider: nil)
-        User.create!(
+        # binding.pry
+        user = User.new(
           username: auth_provider&.[](:credentials)&.[](:username),
           password: auth_provider&.[](:credentials)&.[](:password)
         )
+        if user.save
+          user
+        else
+          raise GraphQL::ExecutionError, user.errors.full_messages.join(", ")
+        end
        end
     end
   end

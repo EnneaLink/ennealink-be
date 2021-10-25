@@ -19,6 +19,16 @@ module Mutations
           expect(data['user']['id']).to eq(User.first.id.to_s)
           expect(data['user']['username']).to eq('Gertie')
         end
+
+        it 'returns error message if user already exists' do
+          User.create!(username: 'Gertie', password: 'password')
+
+          post '/graphql', params: { query: query }
+
+          json = JSON.parse(response.body)
+          
+          expect(json['errors'][0]['message']).to eq('Username has already been taken')
+        end
       end
 
       def query
