@@ -10,7 +10,7 @@ module Mutations
       def resolve(attributes)
         friendship = Friendship.find_by(user_id: attributes[:user_id].to_i, friend_id: attributes[:friend_id].to_i)
         friendship.destroy
-        if friendship.save
+        if Friendship.find_by(user_id: attributes[:user_id].to_i, friend_id: attributes[:friend_id].to_i) == nil
           {
             success: true
           }
