@@ -16,7 +16,7 @@ module Mutations
           expect(data["addFriend"]["success"]).to eq(true)
         end
 
-        xit 'it does not create friendship' do
+        it 'it does not create friendship' do
           @pam = create(:user)
 
           post '/graphql', params: { query: query2 }

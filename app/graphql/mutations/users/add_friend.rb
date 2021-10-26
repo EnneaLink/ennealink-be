@@ -8,7 +8,7 @@ module Mutations
 
 
       def resolve(attributes)
-        friendship = Friendship.create!(user_id: attributes[:user_id].to_i, friend_id: attributes[:friend_id].to_i)
+        friendship = Friendship.new(user_id: attributes[:user_id].to_i, friend_id: attributes[:friend_id].to_i)
         if friendship.save
           {
             success: true
