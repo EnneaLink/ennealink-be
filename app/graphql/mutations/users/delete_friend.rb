@@ -14,10 +14,6 @@ module Mutations
           {
             success: true
           }
-        else
-          {
-            success: false
-          }
         end
       end
     end
