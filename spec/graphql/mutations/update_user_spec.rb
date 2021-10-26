@@ -158,21 +158,6 @@ module Mutations
           expect(data["updateUser"]["myersBrigg"]["link"]).to eq(mb1.link)
         end
 
-        xit 'it returns error if a field is blank' do
-          personality_data
-
-          e1 = Enneagram.first
-          mb1 = MyersBrigg.first
-          @pam = create(:user, myers_brigg_id: mb1.id, enneagram_id: e1.id)
-
-          post '/graphql', params: { query: query5 }
-
-          result = JSON.parse(response.body)
-          data = result['data']
-          binding.pry
-          expect(data).to eq(nil)
-        end
-
         def query
           <<~GQL
           mutation {
@@ -270,35 +255,6 @@ module Mutations
             updateUser(
                 id: "#{@pam.id}"
                 username: "GunBunz"
-              )
-              {
-                id
-                username
-                enneagram{
-                  id
-                  number
-                  name
-                  description
-                  link
-                }
-                myersBrigg{
-                  id
-                  typeOf
-                  name
-                  description
-                  link
-                }
-              }
-            }
-          GQL
-        end
-
-        def query5
-          <<~GQL
-          mutation {
-            updateUser(
-                id: "#{@pam.id}"
-                username: ""
               )
               {
                 id

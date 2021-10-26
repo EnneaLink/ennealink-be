@@ -13,7 +13,7 @@ module Mutations
           data = json['data']
 
           expect(data['loginUser']['id']).to eq(@u1.id.to_s)
-          expect(data['loginUser']['username']).to eq(@u1.username)
+          expect(data['loginUser']['success']).to eq(true)
         end
 
         it 'fails login with bad password' do
@@ -37,7 +37,7 @@ module Mutations
           )
             {
               id
-              username
+              success
             }
           }
         GQL
@@ -52,7 +52,7 @@ module Mutations
           )
             {
               id
-              username
+              success
             }
           }
         GQL
