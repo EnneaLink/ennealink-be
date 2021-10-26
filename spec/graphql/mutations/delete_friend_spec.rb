@@ -16,36 +16,12 @@ module Mutations
           expect(data["deleteFriend"]["success"]).to eq(true)
         end
 
-        xit 'it does not create friendship' do
-          @pam = create(:user)
-
-          post '/graphql', params: { query: query2 }
-
-          result = JSON.parse(response.body)
-          data = result['data']
-
-          expect(data["addFriend"]["success"]).to eq(false)
-        end
         def query
           <<~GQL
           mutation {
             deleteFriend(
                 userId: "#{@pam.id}"
                 friendId: "#{@metal.id}"
-              )
-              {
-                success
-              }
-            }
-          GQL
-        end
-
-        def query2
-          <<~GQL
-          mutation {
-            deleteFriend(
-                userId: "#{@pam.id}"
-                friendId: "69"
               )
               {
                 success

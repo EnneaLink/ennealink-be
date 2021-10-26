@@ -9,23 +9,17 @@ module Mutations
         description "The user's password"
       end
 
-      field :success, Boolean, null: false
-      field :id, ID, null: false
+      type Types::UserType
+      field :user, Types::UserType, null: false
 
       def resolve(attributes)
         user = User.find_by(username: attributes[:username])
         valid_sign_in = user.present? && user.authenticate(attributes[:password])
         
         if valid_sign_in
-          {
-            success: true,
-            id: valid_sign_in.id
-          }
+          user
         else
-          {
-            success: false,
-            id: 'nil'
-          }
+          GraphQL::ExecutionError.new("Invalid input: Credentials Invalid!")
         end
       end
     end
