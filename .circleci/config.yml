@@ -42,7 +42,7 @@ jobs:
       - run: sudo apt install -y postgresql-client || true
       - run:
           name: Setup DB
-          command: bundle exec rails db:{drop,create,migrate,seed} --trace
+          command: bundle exec rake db:create db:schema:load db:seed --trace
       - run:
           name: Run Test Suite
           command: bundle exec rspec -fd
