@@ -42,7 +42,7 @@ jobs:
       - run: sudo apt install -y postgresql-client || true
       - run:
           name: Setup DB
-          command: bundle exec rake db:create db:schema:load
+          command: bundle exec rails db:create db:schema:load
       - run:
           name: Run Test Suite
           command: bundle exec rspec -fd
