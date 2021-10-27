@@ -16,6 +16,7 @@
   <a href="#set-up">Set Up</a> •
   <a href="#installation">Installation</a> •
   <a href="#how-to-use">How To Use</a> •
+  <a href="#endpoint-documentation">Endpoint Documentation</a> •
   <a href="#database-schema">Database Schema</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#acknowledgements">Acknowledgements</a>
@@ -102,8 +103,9 @@ The Front End React app posts to the `/graphql` endpoint and sends request queri
 
 
 
-### Endpoint Documentation
+## Endpoint Documentation
 
+### Get User Stats
 Request Query:
 ```graphql
 {
@@ -191,7 +193,7 @@ Response:
 }
 ```
 
-
+### Get User
 Request Query:
 ```graphql
 {
@@ -214,7 +216,7 @@ Response:
 }
 ```
 
-
+### Get All Users
 Request Query:
 ```graphql
 {
@@ -283,7 +285,7 @@ Response:
 ```
 
 
-
+### User Registration
 Request Mutation:
 ```graphql
 mutation {
@@ -313,7 +315,7 @@ Response:
 }
 ```
 
-
+### User Login
 Request Mutation:
 ```graphql
 mutation {
@@ -338,6 +340,7 @@ mutation {
  }
  ```
  
+ ### Update User Profile
  Request Mutation:
  ```graphql
  mutation {
@@ -393,7 +396,7 @@ mutation {
  }
  ```
  
- 
+ ### Add Friend
  Request Mutation:
  ```graphql
  mutation {
@@ -416,6 +419,7 @@ mutation {
  }
  ```
  
+ ### Remove Friend
  Request Mutation:
  ```graphql
  mutation {
