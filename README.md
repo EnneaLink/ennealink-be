@@ -25,9 +25,14 @@
 
 ## About The Project
 
+A social app that is used to make connections with friends and learn more about personality profiles.
+
 
 ### Learning Goals
-
+- Create a full stack app with a React Front End and a Rails Back End
+- Implement GraphQL queries and mutations
+- Secure Authentication through GraphQL queries
+- Using CORS for secure connection and optimized security
 
 
 
@@ -36,12 +41,12 @@
 | Development | Testing       | Gems            |
 |   :----:    |    :----:     |    :----:       |
 | Ruby 2.7.2  | RSpec         | Pry             |
-| Rails 5.2.5 | WebMock       | ShouldaMatchers |
-| JSON        | VCR           | Faraday         |
-| Atom        | SimpleCov     | Figaro          |
-| Github      | FactoryBot    | FastJSON        |
-| CircleCI    | Faker         |                 |
-| Heroku      | Rubocop       |                 |
+| Rails 5.2.5 | SimpleCov     | ShouldaMatchers |
+| GraphQL     | FactoryBot    | BCrypt          |
+| Atom        | Faker         | Rack-cors       |
+| Github      | Rubocop       |                 |
+| CircleCI    |               |                 |
+| Heroku      |               |                 |
 
 
 
@@ -88,20 +93,18 @@ gem install rails --version 5.2.6
     ```sh
    rails db:create
    rails db:migrate
+   rails db:seed
    ```
 
 
 ## How To Use
-
+The Front End React app posts to the `/graphql` endpoint and sends request queries or mutations in order to create new users, login existing users, update profiles with personality data, or create/remove friends. To learn more about GraphQL implementation in Ruby on Rails visit [this site](https://www.howtographql.com/).
 
 
 
 ### Endpoint Documentation
 
-Request:
-POST `/graphql`
-
-Query:
+Request Query:
 ```graphql
 {
    getUserStats(id: "#{@u1.id}") {
@@ -182,10 +185,95 @@ to practical details in their daily lives.",
           "link":"https://www.16personalities.com/isfj-personality"}}]}}}
 ```
 
-Request:
-POST `/graphql`
 
-Query:
+Request Query:
+```graphql
+{
+  getUser(id: "#{@u1.id}") {
+    id
+    username
+  }
+}
+```
+
+Response:
+```json
+{
+"data": { 
+  "getUser": {
+    "id": "15",
+    "username": "funbucket"
+    }
+  }
+}
+```
+
+
+Request Query:
+```graphql
+{
+  getAllUsers {
+    id
+    username
+    enneagram{
+      id
+      number
+      name
+      description
+      link
+    }
+    myersBrigg{
+      id
+      typeOf
+      name
+      description
+      link
+    }
+  }
+}
+```
+
+Response:
+```json
+{"data"=>
+  {"getAllUsers"=>
+    [{"id"=>"12",
+      "username"=>"funbucket",
+      "enneagram"=>
+       {"id"=>"19",
+        "number"=>1,
+        "name"=>"The Reformer",
+        "description"=>
+         "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic.",
+        "link"=>"https://www.enneagraminstitute.com/type-1"},
+      "myersBrigg"=>
+       {"id"=>"34",
+        "typeOf"=>"ISFJ",
+        "name"=>"The Defender",
+        "description"=>
+         "These people tend to be warm and unassuming in their own steady way. They're efficient and responsible, giving careful attention to practical details in their daily lives.",
+        "link"=>"https://www.16personalities.com/isfj-personality"}},
+     {"id"=>"13",
+      "username"=>"gertie",
+      "enneagram"=>
+       {"id"=>"19",
+        "number"=>1,
+        "name"=>"The Reformer",
+        "description"=>
+         "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic.",
+        "link"=>"https://www.enneagraminstitute.com/type-1"},
+      "myersBrigg"=>
+       {"id"=>"34",
+        "typeOf"=>"ISFJ",
+        "name"=>"The Defender",
+        "description"=>
+         "These people tend to be warm and unassuming in their own steady way. They're efficient and responsible, giving careful attention to practical details in their daily lives.",
+        "link"=>"https://www.16personalities.com/isfj-personality"}}]}}
+```
+
+
+
+Request Query:
 ```graphql
 mutation {
   user: createUser(
