@@ -182,7 +182,13 @@ maintain high standards, but can slip into being critical and perfectionistic.",
           "name":"The Defender",
           "description":"These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention
 to practical details in their daily lives.",
-          "link":"https://www.16personalities.com/isfj-personality"}}]}}}
+          "link":"https://www.16personalities.com/isfj-personality"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
 
@@ -235,45 +241,50 @@ Request Query:
 
 Response:
 ```json
-{"data"=>
-  {"getAllUsers"=>
-    [{"id"=>"12",
-      "username"=>"funbucket",
-      "enneagram"=>
-       {"id"=>"19",
-        "number"=>1,
-        "name"=>"The Reformer",
-        "description"=>
+{"data":
+  {"getAllUsers":
+    [{"id": "12",
+      "username": "funbucket",
+      "enneagram":
+       {"id": "19",
+        "number": 1,
+        "name": "The Reformer",
+        "description": 
          "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic.",
-        "link"=>"https://www.enneagraminstitute.com/type-1"},
-      "myersBrigg"=>
-       {"id"=>"34",
-        "typeOf"=>"ISFJ",
-        "name"=>"The Defender",
-        "description"=>
+        "link": "https://www.enneagraminstitute.com/type-1"},
+      "myersBrigg": 
+       {"id": "34",
+        "typeOf": "ISFJ",
+        "name": "The Defender",
+        "description": 
          "These people tend to be warm and unassuming in their own steady way. They're efficient and responsible, giving careful attention to practical details in their daily lives.",
-        "link"=>"https://www.16personalities.com/isfj-personality"}},
-     {"id"=>"13",
-      "username"=>"gertie",
-      "enneagram"=>
-       {"id"=>"19",
-        "number"=>1,
-        "name"=>"The Reformer",
-        "description"=>
+        "link": "https://www.16personalities.com/isfj-personality"}},
+     {"id": "13",
+      "username": "gertie",
+      "enneagram": 
+       {"id": "19",
+        "number": 1,
+        "name": "The Reformer",
+        "description": 
          "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic.",
-        "link"=>"https://www.enneagraminstitute.com/type-1"},
-      "myersBrigg"=>
-       {"id"=>"34",
-        "typeOf"=>"ISFJ",
-        "name"=>"The Defender",
-        "description"=>
+        "link": "https://www.enneagraminstitute.com/type-1"},
+      "myersBrigg": 
+       {"id": "34",
+        "typeOf": "ISFJ",
+        "name": "The Defender",
+        "description": 
          "These people tend to be warm and unassuming in their own steady way. They're efficient and responsible, giving careful attention to practical details in their daily lives.",
-        "link"=>"https://www.16personalities.com/isfj-personality"}}]}}
+        "link": "https://www.16personalities.com/isfj-personality"
+        }
+      }
+    ]
+  }
+}
 ```
 
 
 
-Request Query:
+Request Mutation:
 ```graphql
 mutation {
   user: createUser(
@@ -301,6 +312,132 @@ Response:
   }
 }
 ```
+
+
+Request Mutation:
+```graphql
+mutation {
+  loginUser(
+    username: "Gertie",
+    password: "password"
+  )
+    {
+      id
+      success
+    }
+  }
+ ```
+ 
+ Response:
+ ```json
+ {
+ "loginUser": {
+    "id": "8", 
+    "success": true
+    }
+ }
+ ```
+ 
+ Request Mutation:
+ ```graphql
+ mutation {
+    updateUser(
+        id: "#{@pam.id}"
+        username: "Carl Crockett"
+        myersBrigg: "ESFJ"
+        enneagram: "8"
+      )
+      {
+        id
+        username
+        enneagram{
+          id
+          number
+          name
+          description
+          link
+        }
+        myersBrigg{
+          id
+          typeOf
+          name
+          description
+          link
+        }
+      }
+    }
+ ```
+ 
+ Response:
+ ```json
+ {
+ "updateUser": {
+   "id": "10",
+   "username": "peter.trantow",
+   "enneagram": {
+     "id": "8",
+     "number": 8,
+     "name": "The Challenger",
+     "description":
+      "Eights are self-confident, strong, and assertive. Protective, resourceful, straight-talking, and decisive, but can also be ego-centric and domineering.",
+     "link": "https://www.enneagraminstitute.com/type-8"},
+   "myersBrigg": {
+     "id": "14",
+     "typeOf": "ESFJ",
+     "name": "The Consul",
+     "description": 
+      "They are attentive and people-focused, and they enjoy taking part in their social community. Their achievements are guided by decisive values, and they willingly offer guidance to others.",
+     "link": "https://www.16personalities.com/esfj-personality"
+     }
+   }
+ }
+ ```
+ 
+ 
+ Request Mutation:
+ ```graphql
+ mutation {
+   addFriend(
+       userId: "#{@pam.id}"
+       friendId: "#{@metal.id}"
+     )
+     {
+       success
+     }
+   }
+ ```
+ 
+ Response:
+ ```json
+ {
+ "addFriend": {
+   "success": true
+   }
+ }
+ ```
+ 
+ Request Mutation:
+ ```graphql
+ mutation {
+    deleteFriend(
+        userId: "#{@pam.id}"
+        friendId: "#{@metal.id}"
+      )
+      {
+        success
+      }
+    }
+ 
+ ```
+ 
+ Response:
+ ```json
+ {
+ "deleteFriend": {
+   "success": true
+   }
+ }
+ ```
 
 ## Database Schema
 
