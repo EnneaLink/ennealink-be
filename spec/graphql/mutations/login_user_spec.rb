@@ -12,8 +12,8 @@ module Mutations
           json = JSON.parse(response.body)
           data = json['data']
 
-          expect(data['loginUser']['id']).to eq(@u1.id.to_s)
           expect(data['loginUser']['success']).to eq(true)
+          expect(data['loginUser']['id']).to eq(@u1.id.to_s)
         end
 
         it 'fails login with bad password' do
@@ -22,9 +22,10 @@ module Mutations
           post '/graphql', params: {query: query2}
 
           json = JSON.parse(response.body)
-          errors = json['errors']
-          
-          expect(errors[0]['message']).to eq('Invalid input: Credentials Invalid!')
+          data = json['data']
+
+          expect(data['loginUser']['success']).to eq(false)
+          expect(data['loginUser']['id']).to eq('nil')
         end
       end
 

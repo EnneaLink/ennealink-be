@@ -65,7 +65,7 @@ module Mutations
           expect(data["updateUser"]["myersBrigg"]["link"]).to eq(mb.link)
         end
 
-        it 'it can update a users myers briggs only when they previously had everything filled out' do
+        xit 'it can update a users myers briggs only when they previously had everything filled out' do
           personality_data
 
           e = Enneagram.all[7]
@@ -97,7 +97,7 @@ module Mutations
           expect(data["updateUser"]["myersBrigg"]["link"]).to eq(mb.link)
         end
 
-        it 'it can update a users enneagram only when they previously had everything filled out' do
+        xit 'it can update a users enneagram only when they previously had everything filled out' do
           personality_data
           e = Enneagram.all[7]
           mb = MyersBrigg.all[13]
@@ -128,7 +128,7 @@ module Mutations
           expect(data["updateUser"]["myersBrigg"]["link"]).to eq(mb1.link)
         end
 
-        it 'it can update a users username' do
+        xit 'it can update a users username' do
           personality_data
 
           e1 = Enneagram.first
