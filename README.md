@@ -448,7 +448,7 @@ mutation {
  ```
 
 ## Database Schema
-![image](https://user-images.githubusercontent.com/80797707/139114722-95286571-1472-4b14-8968-a382707d6f13.png)
+![ennealink-be-db-design 2](https://user-images.githubusercontent.com/80797707/139324490-5c3bf1ad-7369-4cfc-93e7-a7180683bfc3.png)
 
 
 
