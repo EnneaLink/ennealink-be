@@ -7,7 +7,10 @@
   EnneaLink API
   <br>
 </h1>
- [![CircleCI](https://circleci.com/gh/EnneaLink/ennealink-be.svg?style=svg)](https://app.circleci.com/pipelines/github/EnneaLink/ennealink-be)
+ 
+ <a href="https://app.circleci.com/pipelines/github/EnneaLink/ennealink-be">
+    <img src="https://circleci.com/gh/EnneaLink/ennealink-be.svg?style=svg" alt="build_badge">
+  </a>
   
 <!-- CONTENTS -->
 <p align="center">
