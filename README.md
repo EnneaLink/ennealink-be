@@ -7,7 +7,7 @@
   EnneaLink API
   <br>
 </h1>
-  [![EnneaLink](https://circleci.com/gh/EnneaLink/ennealink-be.svg?style=svg&circle-token=45057829eb6a3d52e72e2489ec9b68aa62d39949)](https://app.circleci.com/pipelines/github/EnneaLink/ennealink-be)
+  [![EnneaLink](https://circleci.com/gh/EnneaLink/ennealink-be.svg?style=svg&circle-token=45057829eb6a3d52e72e2489ec9b68aa62d39949)]
   
 <!-- CONTENTS -->
 <p align="center">
