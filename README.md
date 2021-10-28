@@ -8,9 +8,9 @@
   <br>
 </h1>
  
- <center><a href="https://app.circleci.com/pipelines/github/EnneaLink/ennealink-be">
+ <a allign="center" href="https://app.circleci.com/pipelines/github/EnneaLink/ennealink-be">
     <img src="https://circleci.com/gh/EnneaLink/ennealink-be.svg?style=svg" alt="build_badge">
-  </a></center>
+  </a>
   
 <!-- CONTENTS -->
 <p align="center">
