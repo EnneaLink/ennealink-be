@@ -2,7 +2,7 @@
 <h1 align="center">
   <br>
   <a href="https://github.com/EnneaLink/ennealink-be">
-    <img src="![image](https://user-images.githubusercontent.com/76886492/139290920-ef1226f4-dbfa-47e1-9676-cc7c61b34b58.png)" alt="Logo" width="200" height="200"></a>
+    <img src="https://user-images.githubusercontent.com/76886492/139290920-ef1226f4-dbfa-47e1-9676-cc7c61b34b58.png" alt="Logo" width="200" height="200"></a>
   <br>
   EnneaLink API
   <br>
